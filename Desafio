@@ -1,0 +1,59 @@
+Desafio criar um novo container
+
+docroot@ubuntu:~$ docker --version
+Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2
+root@ubuntu:~$ docker info | head
+Client:
+ Version:    29.1.3
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  0.30.1
+    Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+  trust: Manage trust on Docker images (Docker Inc.)
+    Version:  29.1.3
+root@ubuntu:~$ docker run -d --name desafio-aula4 -p 8081:80 nginx:alpine
+docker: Error response from daemon: Conflict. The container name "/desafio-aula4" is already in use by container "093805e4e5b61c1a76e44d1654f45072538d594bba0f95863776848939cfb21a". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+093805e4e5b6   nginx:alpine   "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   desafio-aula4
+root@ubuntu:~$ curl localhost:8081
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+root@ubuntu:~$ docker stop desafio-aula4
+desafio-aula4
+root@ubuntu:~$ docker rm desafio-aula4
+desafio-aula4
+root@ubuntu:~$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+f97c261c303f   hello-world   "/hello"   18 minutes ago   Exited (0) 18 minutes ago             stupefied_neumann
+root@ubuntu:~$ 
+
