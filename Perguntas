@@ -1,0 +1,13 @@
+        PERGUNTAS:
+
+1. Qual é a principal diferença entre uma máquina virtual e um contêiner?
+r: A principal diferença é como eles utilizam o sistema operacional
+vm= computador virtual completo+ sistema operacional próprio
+container= aplicação isolada+compartilha o sistema operacional
+
+2. Qual é a diferença entre uma imagem Docker e um contêiner?
+r:imagem docker é o modelo/base da aplicação
+container é a imagem em execução
+
+3. Por que contêineres são interessantes em ambientes de nuvem?
+r:sao interessantes na nuvem porque sao leves rapidos e facilitam a implantação e a escalabilidade das aplicações
